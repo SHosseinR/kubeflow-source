@@ -155,7 +155,7 @@ describe('Pipelines Card', () => {
 
         const header = pipelinesCard.shadowRoot.getElementById('message');
         expect(header.hasAttribute('hidden')).toBe(false);
-        expect(header.innerText).toBe('Error retrieving Pipelines');
+        expect(header.innerText).toBe('خطا در دریافت پایپلاین ها');
     });
 
     it('Shows error message when Pipeline Runs request fails', async () => {
@@ -173,7 +173,7 @@ describe('Pipelines Card', () => {
 
         const header = pipelinesCard.shadowRoot.getElementById('message');
         expect(header.hasAttribute('hidden')).toBe(false);
-        expect(header.innerText).toBe('Error retrieving Pipeline Runs');
+        expect(header.innerText).toBe('خطا در دریافت پایپلاین های اجرا شده');
     });
 
     it('Shows message when no Pipelines are found', async () => {

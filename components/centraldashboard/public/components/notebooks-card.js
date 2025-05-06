@@ -33,7 +33,7 @@ export class NotebooksCard extends PolymerElement {
             loading="{{loading}}" on-response="_onNotebookServersResponse"
             on-error="_onError">
         </iron-ajax>
-        <paper-card heading="Recent Notebooks">
+        <paper-card heading="نوتبوک های اخیر">
             <paper-progress indeterminate class="slow"
                 hidden$="[[!loading]]"></paper-progress>
             <header id="message" hidden$="[[!message]]">[[message]]</header>
@@ -108,7 +108,7 @@ export class NotebooksCard extends PolymerElement {
             this._onError();
         }
         this.message = this.notebooks.length ?
-            '' : `No Notebooks in namespace ${this.namespace}`;
+            '' : `هیچ نوتبوکی در namespace ${this.namespace} وجود ندارد`;
         this.loading = false;
     }
 

@@ -19,33 +19,33 @@ const TEMPLATE = `
 const MENU_LINKS = [
     {
         link: '/jupyter/',
-        text: 'Notebooks',
+        text: 'نوتبوک ها',
     },
     {
         link: '/pipeline/#/pipelines',
-        text: 'Pipelines',
+        text: 'پایپلاین ها',
     },
     {
         link: '/katib/trials',
-        text: 'Katib Trials',
+        text: 'چرخه آموزش',
     },
     {
         type: 'section',
-        text: 'Experiments',
+        text: 'آزمایش ها',
         items: [
             {
                 link: '/pipeline/#/experiments',
-                text: 'Pipelines',
+                text: 'پایپلاین ها',
             },
             {
                 link: '/katib/experiments',
-                text: 'Katib Experiments',
+                text: 'چرخه آموزش',
             },
         ],
     },
     {
         link: '/pipeline/#/runs',
-        text: 'Runs',
+        text: 'اجراها',
     },
     {
         link: '/myapp/{ns}',
