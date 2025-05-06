@@ -19,7 +19,7 @@ styleElement.innerHTML = `
             };
 
             --dashboard-card-header: {
-                font-family: "Google Sans";
+                font-family: "Tahoma ";
                 height: 62px;
                 border-bottom: 1px solid var(--divider-color);
                 @apply --layout-horizontal;
@@ -111,7 +111,7 @@ styleElement.innerHTML = `
         #message {
             color: var(--google-grey-500);
             font-style: italic;
-            font-family: Google Sans;
+            font-family: Tahoma ;
             padding: 0.5em 1em;
         }
     </style>

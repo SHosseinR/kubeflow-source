@@ -28,7 +28,7 @@ export class ActivityView extends PolymerElement {
                     color: var(--google-grey-500);
                     font-style: italic;
                     font-size: 2em;
-                    font-family: Google Sans;
+                    font-family: Tahoma ;
                     padding: 1em;
                     text-align: center;
                     align-self: center;

@@ -17,7 +17,7 @@ import chartCss from '!css-loader!exports-loader!chart.js/dist/Chart.css';
 
 import './card-styles.js';
 
-Chart.defaults.global.defaultFontFamily = '"Google Sans", sans-serif';
+Chart.defaults.global.defaultFontFamily = '"Tahoma ", sans-serif';
 Chart.Tooltip.positioners.custom = (_, eventPosition) => (
     {x: eventPosition.x, y: eventPosition.y}
 );
@@ -62,7 +62,7 @@ class ResourceChart extends PolymerElement {
                 @apply --layout-end-justified;
             }
             #header-text {
-                font-family: "Google Sans";
+                font-family: "Tahoma ";
                 font-size: 16px;
                 font-weight: 500;
                 flex: 1;
