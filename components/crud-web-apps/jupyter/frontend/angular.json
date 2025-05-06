@@ -19,7 +19,8 @@
       "i18n": {
         "sourceLocale": "en-US",
         "locales": {
-          "fr": "i18n/fr/messages.fr.xlf"
+          "fr": "i18n/fr/messages.fr.xlf",
+          "fa": "i18n/fa/messages.fa.xlf"
         }
       },
       "architect": {
@@ -62,6 +63,9 @@
           "configurations": {
             "fr": {
               "localize": ["fr"]
+            },
+            "fa": {
+              "localize": ["fa"]
             },
             "production": {
               "fileReplacements": [
@@ -109,6 +113,10 @@
             },
             "fr": {
               "browserTarget": "frontend:build:fr",
+              "proxyConfig": "src/proxy.conf.json"
+            },
+            "fa": {
+              "browserTarget": "frontend:build:fa",
               "proxyConfig": "src/proxy.conf.json"
             }
           }

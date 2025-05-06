@@ -6,4 +6,5 @@ body {
   --primary-background-color: #2196f3;
   --sidebar-color: #f8fafb;
   --border-color: #f4f4f6;
+  direction: rtl;
 }

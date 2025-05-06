@@ -1,5 +1,5 @@
 # --- Build the backend kubeflow-wheel ---
-FROM python:3.10-slim AS backend-kubeflow-wheel
+FROM focker.ir/python:3.10-slim AS backend-kubeflow-wheel
 
 WORKDIR /src
 
@@ -7,7 +7,7 @@ COPY ./common/backend/ .
 RUN python3 setup.py bdist_wheel
 
 # --- Build the frontend kubeflow library ---
-FROM node:16.20.2-bullseye as frontend-kubeflow-lib
+FROM focker.ir/node:16.20.2-bullseye as frontend-kubeflow-lib
 
 WORKDIR /src
 
@@ -22,7 +22,7 @@ COPY ./common/frontend/kubeflow-common-lib/tsconfig.json .
 RUN npm run build
 
 # --- Build the frontend ---
-FROM node:16.20.2-bullseye as frontend
+FROM focker.ir/node:16.20.2-bullseye as frontend
 
 WORKDIR /src
 
@@ -38,10 +38,10 @@ ENV NG_CLI_ANALYTICS "ci"
 RUN npm ci
 COPY --from=frontend-kubeflow-lib /src/dist/kubeflow/ ./node_modules/kubeflow/
 
-RUN npm run build -- --output-path=./dist/default --configuration=production
+RUN npm run build -- --output-path=./dist/default --configuration=production,fa
 
 # Web App
-FROM python:3.10-slim
+FROM focker.ir/python:3.10-slim
 
 WORKDIR /package
 COPY --from=backend-kubeflow-wheel /src .
