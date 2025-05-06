@@ -41,6 +41,8 @@
 
 #MainDrawer {
     color: white;
+    right: 0;
+    left: auto;
     --app-drawer-content-container: {
         background: var(--primary-background-color) !important;
         display: flex !important;
