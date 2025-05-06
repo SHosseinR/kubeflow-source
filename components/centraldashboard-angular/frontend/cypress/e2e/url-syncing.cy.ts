@@ -22,7 +22,7 @@ describe('Browser and Iframe URL syncing', () => {
     cy.get('[data-cy-sidenav-menu-item="Notebooks"]')
       .should('be.visible')
       .click();
-    cy.getIframeBody().find('button').contains('New Notebook').click();
+    cy.getIframeBody().find('button').contains('نوتبوک جدید').click();
     cy.wait('@storageClassRequest');
     cy.equalUrls();
 

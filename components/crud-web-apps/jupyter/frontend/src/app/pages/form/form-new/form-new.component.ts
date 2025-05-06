@@ -166,7 +166,7 @@ export class FormNewComponent implements OnInit, OnDestroy {
   onSubmit() {
     const configInfo: SnackBarConfig = {
       data: {
-        msg: 'Submitting new Notebook...',
+        msg: 'در حال ساخت نوتبوک ...',
         snackType: SnackType.Info,
       },
     };

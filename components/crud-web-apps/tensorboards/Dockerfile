@@ -1,5 +1,5 @@
 # --- Build the backend kubeflow-wheel ---
-FROM python:3.10-slim AS backend-kubeflow-wheel
+FROM focker.ir/python:3.10-slim AS backend-kubeflow-wheel
 
 WORKDIR /src
 
@@ -7,7 +7,7 @@ COPY ./common/backend/ .
 RUN python3 setup.py bdist_wheel
 
 # --- Build the frontend kubeflow library ---
-FROM node:16.20.2-bullseye as frontend-kubeflow-lib
+FROM focker.ir/node:16.20.2-bullseye as frontend-kubeflow-lib
 
 WORKDIR /src
 
@@ -22,7 +22,7 @@ COPY ./common/frontend/kubeflow-common-lib/tsconfig.json .
 RUN npm run build
 
 # --- Build the frontend ---
-FROM node:16.20.2-bullseye as frontend
+FROM focker.ir/node:16.20.2-bullseye as frontend
 
 WORKDIR /src
 
@@ -33,6 +33,7 @@ COPY ./tensorboards/frontend/tsconfig.app.json ./
 COPY ./tensorboards/frontend/tsconfig.spec.json ./
 COPY ./tensorboards/frontend/angular.json ./
 COPY ./tensorboards/frontend/src ./src
+COPY ./tensorboards/frontend/i18n/ ./i18n/
 
 ENV NG_CLI_ANALYTICS "ci"
 RUN npm ci
@@ -41,7 +42,7 @@ COPY --from=frontend-kubeflow-lib /src/dist/kubeflow/ ./node_modules/kubeflow/
 RUN npm run build -- --output-path=./dist --configuration=production
 
 # Web App
-FROM python:3.10-slim
+FROM focker.ir/python:3.10-slim
 
 WORKDIR /package
 COPY --from=backend-kubeflow-wheel /src .
@@ -56,5 +57,6 @@ COPY ./tensorboards/backend/entrypoint.py .
 COPY ./tensorboards/backend/Makefile .
 
 COPY --from=frontend /src/dist/ /src/app/static/
+RUN cp -r /src/apps/default/static/fa/* /src/apps/default/static/
 
 ENTRYPOINT ["/bin/bash","-c","gunicorn -w 3 --bind 0.0.0.0:5000 --access-logfile - entrypoint:app"]

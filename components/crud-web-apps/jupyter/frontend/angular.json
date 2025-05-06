@@ -68,6 +68,9 @@
               "localize": ["fa"]
             },
             "production": {
+              "localize": ["fa"],
+              "outputPath": "dist/default",
+              "baseHref": "/",
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",

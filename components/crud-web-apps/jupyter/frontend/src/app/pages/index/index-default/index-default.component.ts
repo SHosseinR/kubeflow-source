@@ -37,7 +37,7 @@ export class IndexDefaultComponent implements OnInit, OnDestroy {
   dashboardDisconnectedState = DashboardState.Disconnected;
 
   private newNotebookButton = new ToolbarButton({
-    text: $localize`New Notebook`,
+    text: "ساخت نوتبوک جدید",
     icon: 'add',
     stroked: true,
     fn: () => {

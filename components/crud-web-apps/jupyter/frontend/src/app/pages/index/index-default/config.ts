@@ -55,7 +55,7 @@ export const defaultConfig: TableConfig = {
       },
     },
     {
-      matHeaderCellDef: $localize`Created at`,
+      matHeaderCellDef: "زمان ایجاد",
       matColumnDef: 'age',
       style: { width: '12%' },
       textAlignment: 'right',
@@ -63,7 +63,7 @@ export const defaultConfig: TableConfig = {
       sort: true,
     },
     {
-      matHeaderCellDef: $localize`Last activity`,
+      matHeaderCellDef: "آخرین فعالیت",
       matColumnDef: 'last_activity',
       textAlignment: 'right',
       value: new DateTimeValue({ field: 'last_activity' }),

@@ -33,12 +33,13 @@ COPY ./jupyter/frontend/tsconfig.app.json ./
 COPY ./jupyter/frontend/tsconfig.spec.json ./
 COPY ./jupyter/frontend/angular.json ./
 COPY ./jupyter/frontend/src ./src
-
+COPY ./jupyter/frontend/i18n/ ./i18n/
+# RUN ls /src/i18n/fa
 ENV NG_CLI_ANALYTICS "ci"
 RUN npm ci
 COPY --from=frontend-kubeflow-lib /src/dist/kubeflow/ ./node_modules/kubeflow/
 
-RUN npm run build -- --output-path=./dist/default --configuration=production,fa
+RUN npm run build -- --output-path=./dist/default --configuration=production
 
 # Web App
 FROM focker.ir/python:3.10-slim
@@ -55,5 +56,6 @@ COPY ./jupyter/backend/apps/ ./apps
 COPY ./jupyter/backend/entrypoint.py .
 
 COPY --from=frontend /src/dist/default/ /src/apps/default/static/
+RUN cp -r /src/apps/default/static/fa/* /src/apps/default/static/
 
 ENTRYPOINT ["/bin/bash","-c","gunicorn -w 3 --bind 0.0.0.0:5000 --access-logfile - entrypoint:app"]

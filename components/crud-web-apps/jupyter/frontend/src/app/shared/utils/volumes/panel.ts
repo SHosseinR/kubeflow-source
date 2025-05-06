@@ -22,7 +22,7 @@ function getVolumeType(pvc: V1PersistentVolumeClaim): NEW_VOLUME_TYPE {
 }
 
 export function getVolumeTitle(vol: Volume) {
-  return vol.existingSource ? 'Existing volume' : 'New volume';
+  return vol.existingSource ? 'دیسک موجود' : 'دیسک جدید';
 }
 
 export function getVolumeName(vol: Volume): string {

@@ -1,7 +1,7 @@
 <mat-form-field class="example-chip-list" appearance="none">
   <mat-chip-list #chipList>
     <mat-icon matPrefix class="filter-icon">filter_list</mat-icon>
-    <span class="filter-header">Filter</span>
+    <span class="filter-header">فیلتر</span>
     <mat-chip
       *ngFor="let chip of chips"
       (removed)="remove(chip)"
@@ -14,7 +14,7 @@
     </mat-chip>
     <input
       id="filterInput"
-      placeholder="Enter property name or value"
+      placeholder="نام یا مقدار را وارد کنید."
       #chipInput
       (keydown.escape)="blurInput(chipInput)"
       [formControl]="chipCtrl"
