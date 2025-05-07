@@ -40,7 +40,7 @@ export class IndexDefaultComponent implements OnInit, OnDestroy {
   public dashboardDisconnectedState = DashboardState.Disconnected;
 
   private newVolumeButton = new ToolbarButton({
-    text: $localize`New Volume`,
+    text: "دیسک جدید",
     icon: 'add',
     stroked: true,
     fn: () => {

@@ -27,7 +27,7 @@ export const defaultConfig: TableConfig = {
       sort: true,
     },
     {
-      matHeaderCellDef: $localize`Created at`,
+      matHeaderCellDef: "زمان ایجاد",
       matColumnDef: 'age',
       style: { width: '12%' },
       value: new DateTimeValue({ field: 'metadata.creationTimestamp' }),

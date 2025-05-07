@@ -32,7 +32,7 @@ export const tableConfig: TableConfig = {
       sort: true,
     },
     {
-      matHeaderCellDef: $localize`Created at`,
+      matHeaderCellDef: "زمان ایجاد",
       matColumnDef: 'age',
       textAlignment: 'right',
       style: { width: '10%' },
