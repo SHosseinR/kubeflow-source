@@ -1,0 +1,9 @@
+# OWNERS file for Persian translations
+# Please add the maintainers for the Persian language here.
+# Example:
+# username1
+# username2 
+approvers:
+  - hosein
+  - ali
+reviewers:

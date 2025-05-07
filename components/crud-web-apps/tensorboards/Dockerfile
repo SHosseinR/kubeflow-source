@@ -57,6 +57,7 @@ COPY ./tensorboards/backend/entrypoint.py .
 COPY ./tensorboards/backend/Makefile .
 
 COPY --from=frontend /src/dist/ /src/app/static/
-RUN cp -r /src/apps/static/fa/* /src/apps/static/
+# RUN ls -la /src/app/static/
+RUN cp -r /src/app/static/fa/* /src/app/static/
 
 ENTRYPOINT ["/bin/bash","-c","gunicorn -w 3 --bind 0.0.0.0:5000 --access-logfile - entrypoint:app"]
