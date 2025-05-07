@@ -7,11 +7,11 @@ iron-ajax#GetContribsAjax(auto='[[!empty(ownedNamespace)]]', url='/api/workgroup
 h2
     iron-icon.icon(icon='kubeflow:account-group')
     span.text
-        | Contributors for -
+        | شرکت کنندگان برای فضای -
         |
         code [[ownedNamespace.namespace]]
 .content.small
-    md2-input(label='Email Addresses', value='{{newContribEmail}}', on-submit='addNewContrib', placeholder='Add by email address', error$='[[contribCreateError]]')
+    md2-input(label='آدرس ایمیل', value='{{newContribEmail}}', on-submit='addNewContrib', placeholder='با آدرس ایمیل اضافه کنید.', error$='[[contribCreateError]]')
         .prefix(slot='prefix')
             template(is='dom-repeat', items='[[contributorList]]')
                 paper-chip(on-remove='removeContributor') [[item]]
