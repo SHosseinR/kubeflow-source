@@ -42,7 +42,7 @@ export class IndexComponent implements OnInit, OnDestroy {
   public dashboardDisconnectedState = DashboardState.Disconnected;
 
   private newTensorBoardButton = new ToolbarButton({
-    text: $localize`New TensorBoard`,
+    text: "مانیتورینگ جدید",
     icon: 'add',
     stroked: true,
     fn: () => {
