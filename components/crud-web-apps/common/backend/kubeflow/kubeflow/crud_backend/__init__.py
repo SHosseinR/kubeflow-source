@@ -10,6 +10,7 @@ from .metrics import enable_metrics
 from .probes import bp as probes_bp
 from .routes import bp as base_routes_bp
 from .serving import bp as serving_bp
+from . import settings
 
 LOG_FORMAT = "%(asctime)s | %(name)s | %(levelname)s | %(message)s"
 
@@ -28,7 +29,8 @@ def create_app(name, static_folder, config):
     # Register all the blueprints
     app.register_blueprint(authn_bp)
     app.register_blueprint(errors_bp)
-    app.register_blueprint(csrf_bp)
+    if settings.CSRF_ENABLED:
+        app.register_blueprint(csrf_bp)
     app.register_blueprint(probes_bp)
     app.register_blueprint(serving_bp)
     app.register_blueprint(base_routes_bp)

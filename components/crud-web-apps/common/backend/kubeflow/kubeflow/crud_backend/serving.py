@@ -2,7 +2,7 @@ import logging
 
 from flask import Blueprint, Response
 
-from . import csrf, helpers
+from . import csrf, helpers, settings
 
 bp = Blueprint("serving", __name__)
 log = logging.getLogger(__name__)
@@ -26,6 +26,7 @@ def serve_index(path="/"):
     resp = Response(helpers.get_prefixed_index_html(), mimetype="text/html",
                     headers={"Cache-Control": no_cache})
 
-    csrf.set_cookie(resp)
+    if settings.CSRF_ENABLED:
+        csrf.set_cookie(resp)
 
     return resp
