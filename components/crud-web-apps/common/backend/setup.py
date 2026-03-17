@@ -11,6 +11,7 @@ REQUIRES = [
     "gevent",
     "prometheus-flask-exporter >= 0.23.1",
     "importlib-metadata >= 1.0;python_version<'3.8'",
+    "cachetools",
 ]
 
 setuptools.setup(
