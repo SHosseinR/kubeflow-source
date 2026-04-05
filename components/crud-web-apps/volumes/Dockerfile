@@ -1,5 +1,5 @@
 # --- Build the backend kubeflow-wheel ---
-FROM python:3.10-slim AS backend-kubeflow-wheel
+FROM hub.hamdocker.ir/python:3.10-slim AS backend-kubeflow-wheel
 
 WORKDIR /src
 
@@ -7,14 +7,15 @@ COPY ./common/backend/ .
 RUN python3 setup.py bdist_wheel
 
 # --- Build the frontend kubeflow library ---
-FROM node:16.20.2-bullseye as frontend-kubeflow-lib
+FROM hub.hamdocker.ir/node:16.20.2-bullseye as frontend-kubeflow-lib
 
 WORKDIR /src
 
 ENV NG_CLI_ANALYTICS "ci"
 COPY ./common/frontend/kubeflow-common-lib/package.json ./
 COPY ./common/frontend/kubeflow-common-lib/package-lock.json ./
-RUN npm ci
+ENV CYPRESS_INSTALL_BINARY 0
+RUN npm ci 
 
 COPY ./common/frontend/kubeflow-common-lib/projects ./projects
 COPY ./common/frontend/kubeflow-common-lib/angular.json .
@@ -22,7 +23,7 @@ COPY ./common/frontend/kubeflow-common-lib/tsconfig.json .
 RUN npm run build
 
 # --- Build the frontend ---
-FROM node:16.20.2-bullseye as frontend
+FROM hub.hamdocker.ir/node:16.20.2-bullseye as frontend
 
 WORKDIR /src
 
@@ -36,21 +37,22 @@ COPY ./volumes/frontend/src ./src
 COPY ./volumes/frontend/i18n/ ./i18n/
 
 ENV NG_CLI_ANALYTICS "ci"
-RUN npm ci
+ENV CYPRESS_INSTALL_BINARY 0
+RUN npm ci 
 COPY --from=frontend-kubeflow-lib /src/dist/kubeflow/ ./node_modules/kubeflow/
 
 RUN npm run build -- --output-path=./dist/default --configuration=production
 
 # Web App
-FROM python:3.10-slim
+FROM hub.hamdocker.ir/python:3.10-slim
 
 WORKDIR /package
 COPY --from=backend-kubeflow-wheel /src .
-RUN pip3 install .
+RUN pip3 install . 
 
 WORKDIR /src
 COPY ./volumes/backend/requirements.txt .
-RUN pip3 install -r requirements.txt
+RUN pip3 install -r requirements.txt 
 
 COPY ./volumes/backend/apps/ ./apps
 COPY ./volumes/backend/entrypoint.py .
